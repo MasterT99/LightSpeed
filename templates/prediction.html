@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+    <title>predict</title>
+    {% load static %}
+    <link href={% static "image/icon.png" %} rel="icon">
+    <!-- Latest compiled and minified CSS -->
+    <link href={% static "lib/bootstrap.css" %} rel="stylesheet">
+    <link href={% static "lib/bootstrap.min.css" %} rel="stylesheet">
+    <!-- jQuery library -->
+    <script src={% static "lib/jquery-3.4.1.js" %}></script>
+    <script src={% static "lib/jquery-3.4.1.min.js" %}></script>
+    <!-- Popper JS -->
+    <script src={% static "lib/popper.js" %}></script>
+    <!-- Latest compiled JavaScript -->
+    <script src={% static "lib/bootstrap.js" %}></script>
+    <script src={% static "lib/bootstrap.min.js" %}></script>
+</head>
+<body>
+<nav class="navbar sticky-top alert-danger btn-outline-primary">
+    <li class="navbar-brand"><a href="/index">
+        <img class="img" src={% static "image/header.png" %} width="50px" height="50px"></a>
+    </li>
+    <li class="nav mr-auto">
+        <h1>INSURANCE COMPANY LTD</h1>
+    </li>
+    <li class="collapse navbar-collapse" id="navbarCollapse">
+    <li class="nav-item dropdown list-unstyled rounded btn-danger">
+    <a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+            style="color: white;">
+        <h3>Menu</h3>
+    </a>
+        <ul class="dropdown-menu">
+            <a class="dropdown-item" href="/index">Home</a>
+            <a class="dropdown-item" href="/about">About</a>
+            <a class="dropdown-item" href="/announcement">Announcement</a>
+            <a class="dropdown-item" href="/history">History</a>
+            <a class="dropdown-item" href="/contact">Contact</a>
+        </ul>
+    </li> &nbsp;&nbsp;
+    <li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+            class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+            style="color: white;">
+        <h3>Dashboard</h3>
+    </a>
+        <ul class="dropdown-menu">
+            <a class="dropdown-item" href="#">
+                <div>
+                    <center>
+                        <img style="border-radius: 500px" src={% static "/image/defaultuser.jpg" %}
+                                width="120px" height="120px"/><br>{{ fname }}&nbsp;{{ lname }} </center>
+                </div>
+            </a>
+            <hr>
+            <a class="dropdown-item" href="/chat">Chat</a>
+            <a class="dropdown-item" href="/logout">Logout</a>
+        </ul>
+    </li>
+</nav>
+
+<div style="height:30%" class="container">
+    <center>
+        <h1>UPLOADED IMAGES</h1>
+        <table class="table table-md table-striped table-hover">
+            <tr>
+                <td align="center" valign="center">
+                    <img src={% static '/upload/coldstorage/front/'|add:front %} style="height:200px;width:200px"/>
+                    <br/>
+                    Front side.
+                </td>
+
+                <td align="center" valign="center">
+                    <img src={% static '/upload/coldstorage/rear/'|add:rear %} style="height:200px;width:200px" />
+                    <br/>
+                    Rear side.
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="center">
+                    <img src={% static '/upload/coldstorage/left/'|add:left %} style="height:200px;width:200px" />
+                    <br/>
+                    Left side.
+                </td>
+
+                <td align="center" valign="center">
+                    <img src={% static '/upload/coldstorage/right/'|add:right %} style="height:200px;width:200px" />
+                    <br/>
+                    Right side.
+                </td>
+
+            </tr>
+
+        </table>
+    </center>
+</div>
+
+
+<div class="container">
+    <h2>Damage Estimation</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Parts</th>
+            <th>Damage</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr class="success">
+            <td>Hood</td>
+            <td>{{ hood }}</td>
+        </tr>
+        <tr class="danger">
+            <td>Bumper</td>
+            <td>{{ bumper }}</td>
+        </tr>
+        <tr class="info">
+            <td>Winshild</td>
+            <td>{{ winshild }}</td>
+        </tr>
+        <tr class="warning">
+            <td>Left Door</td>
+            <td>{{ door }}</td>
+        </tr>
+        <tr class="warning">
+            <td>Right Door</td>
+            <td>{{ door_right }}</td>
+        </tr>
+        <tr class="active">
+            <td>Left Window</td>
+            <td>{{ window }}</td>
+        </tr>
+        <tr class="active">
+            <td>Right Window</td>
+            <td>{{ window_right }}</td>
+        </tr>
+        <tr class="success">
+            <td>Boot</td>
+            <td>{{ boot }}</td>
+        </tr>
+        <tr class="danger">
+            <td>Rear_winshild</td>
+            <td>{{ rwinshild }}</td>
+        </tr>
+        <tr class="info">
+            <td>Rear_bumper</td>
+            <td>{{ rbumper }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

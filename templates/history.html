@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>History</title>
+{% load static %}
+<link href={% static "css/css3.css" %} rel="stylesheet">
+<link href={% static "image/icon.png" %} rel="icon">
+<!-- Latest compiled and minified CSS -->
+<link href={% static "lib/bootstrap.css" %} rel="stylesheet">
+<link href={% static "lib/bootstrap.min.css" %} rel="stylesheet">
+<!-- jQuery library -->
+<script src={% static "lib/jquery-3.4.1.js" %} ></script>
+<script src={% static "lib/jquery-3.4.1.min.js" %} ></script>
+<!-- Popper JS -->
+<script src={% static "lib/popper.js" %}></script>
+<!-- Latest compiled JavaScript -->
+<script src={% static "lib/bootstrap.js" %}></script>
+<script src={% static "lib/bootstrap.min.js" %}></script>
+
+<style>
+body {
+	background-image: url({% static "image/clg/2.jpg" %});
+	background-size: 100% 100%;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: top;
+}
+</style>
+
+</head>
+<body>
+
+	<nav class="navbar sticky-top alert-danger btn-outline-primary">
+		<li class="navbar-brand"><a href="/index"><img class="img"
+				src={% static "image/header.png" %} width="50px" height="50px"></a></li>
+		<li class="nav mr-auto">
+			<h1>INSURANCE COMPANY LTD</h1>
+		</li>
+		<li class="collapse navbar-collapse" id="navbarCollapse">
+		<li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+			class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+			style="color: white;">
+				<h3>Menu</h3>
+		</a>
+			<ul class="dropdown-menu">
+				<a class="dropdown-item" href="/index">Home</a>
+				<a class="dropdown-item" href="/about">About</a>
+				<a class="dropdown-item" href="/announcement">Announcement</a>
+				<a class="dropdown-item active" href="#">History</a>
+				<a class="dropdown-item" href="/contact">Contact</a>
+			</ul></li> &nbsp;&nbsp;
+	{% ifequal email None %}
+        <li class="nav-item list-unstyled rounded btn-danger"><a
+                class="nav-link rounded" href="/login" style="color: white;">
+            <h3>Login</h3>
+        </a></li>
+        </li>
+    {% else %}
+        <li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+                class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+                style="color: white;">
+            <h3>Dashboard</h3>
+        </a>
+            <ul class="dropdown-menu">
+                <a class="dropdown-item" href="/dashboard">
+                    <div style="text-align: center;"><img
+                            style="border-radius: 500px" src={% static "image/defaultuser.jpg" %} width="120px"
+                            height="120px" alt="User Image"/><br>{{ fname }}&nbsp;{{ lname }}
+                    </div>
+                </a>
+                <hr>
+                <a class="dropdown-item" href="/chat">Chat</a>
+                <a class="dropdown-item" href="/logout">Logout</a>
+            </ul>
+        </li>
+    {% endifequal %}
+	</nav>
+
+	<br>
+	<div class="container rounded"
+		style="font-size: 20px; text-align: justify; background: white;">
+		<br>
+		<h1>Company Information</h1>
+		<p>The General Automobile Insurance Services, Inc. (The General®)
+			is a licensed insurance agency that is a subsidiary of PGC Holdings
+			Corp. (PGC) which is an affiliate of American Family Insurance.
+			Through its insurance company subsidiaries and their predecessors,
+			PGC has been writing automobile insurance in many states throughout
+			the country for over 50 years.</p>
+
+		<br>
+	</div>
+	<br>
+
+	<br>
+	<div class="container rounded"
+		style="font-size: 20px; text-align: justify; background: white;">
+		<br>
+		<h1>Financially Stable</h1>
+		<p>The General® (an agency) offers auto insurance online
+			underwritten by the following insurance companies: Permanent General
+			Assurance Corporation (NAIC #37648), Permanent General Assurance
+			Corporation of Ohio (NAIC #22906), and The General Automobile
+			Insurance Company, Inc. (NAIC# 13703). These insurance companies have
+			been recognized by A.M. Best for their financial stability with
+			ratings of A ("Excellent").</p>
+		<br>
+	</div>
+	<br>
+	<br>
+	<div class="container rounded"
+		style="font-size: 20px; text-align: justify; background: white;">
+		<br>
+		<h1>We accept most cars and drivers</h1>
+		<p>The General® offers auto insurance for drivers that have had a
+			history of driving violations or accidents, have not kept their
+			insurance in force or have less than perfect credit. So, you can
+			still find a good price for your auto insurance needs.</p>
+
+		<br>
+	</div>
+	<br>
+	<br>
+	<div class="container rounded"
+		style="font-size: 20px; text-align: justify; background: white;">
+		<br>
+		<h1>Low down payments</h1>
+		<p>We realize that you have other things you want to spend your
+			money on. Therefore, it is our goal to offer a low down payment
+			option to every policyholder. We offer payment by credit card, and we
+			accept electronic checks in some states.</p>
+
+		<br>
+	</div>
+	<br>
+	<br>
+	<div class="container rounded"
+		style="font-size: 20px; text-align: justify; background: white;">
+		<br>
+		<h1>Convenient monthly payments</h1>
+		<p>We combine our budget-sensitive payment plans with electronic
+			verification of driver information and vehicle information when you
+			are buying the policy so there are no surprises to you down the road.</p>
+
+		<br>
+	</div>
+	<br>
+	<br>
+	<div class="container rounded"
+		style="font-size: 20px; text-align: justify; background: white;">
+		<br>
+		<h1>Quality Claims Handling</h1>
+		<p>Our policy and claims service organizations are focused on
+			serving the customer to complete the recipe for success.</p>
+
+		<br>
+	</div>
+	<br>
+	<br>
+	<div class="container rounded"
+		style="font-size: 20px; text-align: justify; background: white;">
+		<br>
+		<h1>Our Headquarters</h1>
+		<p>2636 Elm Hill Pike, Suite 100 Nashville, Tennessee 37214</p>
+
+		<br>
+	</div>
+	<br>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Announcement</title>
+{% load static %}
+<link href={% static "css/css3.css" %} rel="stylesheet">
+<link href={% static "image/icon.png" %} rel="icon">
+<!-- Latest compiled and minified CSS -->
+<link href={% static "lib/bootstrap.css" %} rel="stylesheet">
+<link href={% static "lib/bootstrap.min.css" %} rel="stylesheet">
+<!-- jQuery library -->
+<script src={% static "lib/jquery-3.4.1.js" %} ></script>
+<script src={% static "lib/jquery-3.4.1.min.js" %} ></script>
+<!-- Popper JS -->
+<script src={% static "lib/popper.js" %}></script>
+<!-- Latest compiled JavaScript -->
+<script src={% static "lib/bootstrap.js" %}></script>
+<script src={% static "lib/bootstrap.min.js" %}></script>
+
+<script type="text/javascript">
+	function ajaxfunction() {
+		var ajaxRequest;
+		try {
+			ajaxRequest = new XMLHttpRequest();
+		} catch (e) {
+			try {
+				ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch (e) {
+				try {
+					ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				} catch (e) {
+					alert("Your Browser Broke!");
+					return false;
+				}
+			}
+		}
+		ajaxRequest.onreadystatechange = function() {
+			if (ajaxRequest.readyState === 4) {
+				var ajaxDisplay = document.getElementById("ajaxDiv");
+				ajaxDisplay.innerHTML = ajaxRequest.responseText;
+			}
+		};
+		var year = document.getElementById("year").value;
+		var month = document.getElementById("month").value;
+		var field = document.getElementById("field").value;
+		var queryString = "?year=" + year + "&month=" + month + "&field=" + field;
+		ajaxRequest.open("GET", "/ajax" + queryString, true);
+		ajaxRequest.send(null);
+	}
+</script>
+<style type="text/css">
+#SM {
+	padding: 1%;
+	background: rgb(0, 128, 255);
+	color: white;
+	text-align: justify;
+}
+
+#SI {
+	text-align: center;
+	padding: 8px;
+	background: rgb(0, 0, 255);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar sticky-top alert-danger btn-outline-primary">
+		<li class="navbar-brand"><a href="/index"><img class="img"
+				src={% static "image/header.png" %} width="50px" height="50px"></a></li>
+		<li class="nav mr-auto">
+			<h1>INSURANCE COMPANY LTD</h1>
+		</li>
+		<li class="collapse navbar-collapse" id="navbarCollapse">
+			<li class="nav-item dropdown list-unstyled rounded btn-danger">
+				<a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown" style="color: white;">
+					<h3>Menu</h3>
+				</a>
+				<ul class="dropdown-menu">
+					<a class="dropdown-item" href="/index">Home</a>
+					<a class="dropdown-item" href="/about">About</a>
+					<a class="dropdown-item active" href="#">Announcement</a>
+					<a class="dropdown-item" href="/history">History</a>
+					<a class="dropdown-item" href="/contact">Contact</a>
+				</ul>
+			</li> &nbsp;&nbsp;
+			{% ifequal email None %}
+        <li class="nav-item list-unstyled rounded btn-danger"><a
+                class="nav-link rounded" href="/login" style="color: white;">
+            <h3>Login</h3>
+        </a></li>
+        </li>
+    {% else %}
+        <li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+                class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+                style="color: white;">
+            <h3>Dashboard</h3>
+        </a>
+            <ul class="dropdown-menu">
+                <a class="dropdown-item" href="/dashboard">
+                    <div style="text-align: center;"><img
+                            style="border-radius: 500px" src={% static "image/defaultuser.jpg" %} width="120px"
+                            height="120px" alt="User Image"/><br>{{ fname }}&nbsp;{{ lname }}
+                    </div>
+                </a>
+                <hr>
+                <a class="dropdown-item" href="/chat">Chat</a>
+                <a class="dropdown-item" href="/logout">Logout</a>
+            </ul>
+        </li>
+    {% endifequal %}
+	</nav>
+	<br>
+	<div class="container">
+		<div class="form-group btn-group btn-group-toggle btn-block row" data-toggle="buttons" style="font-size: 32pt">
+			<label class="btn btn-success col-6 active"> <input type="radio" name="announcement" value="circular">Important Information</label>
+			<label class="btn btn-success col-6"> <input type="radio" name="announcement" value="invension" checked>New Schemes</label>
+		</div>
+		<br>
+		<br>
+		<form class=row>
+			<div class="form-group"><label for="year">Year
+			<select class="form-control col" name="year" id="year" title="Year" required>
+{#				<option value="*">ANY</option>#}
+				<option value="2020">2020</option>
+				<option value="2019">2019</option>
+				<option value="2018">2018</option>
+				<option value="2017">2017</option>
+				<option value="2016">2016</option>
+				<option value="2015">2015</option>
+				<option value="2014">2014</option>
+				<option value="2013">2013</option>
+				<option value="2012">2012</option>
+				<option value="2011">2011</option>
+				<option value="2010">2010</option>
+				<option value="2009">2009</option>
+				<option value="2008">2008</option>
+				<option value="2007">2007</option>
+				<option value="2006">2006</option>
+				<option value="2005">2005</option>
+				<option value="2004">2004</option>
+				<option value="2003">2003</option>
+				<option value="2002">2002</option>
+				<option value="2001">2001</option>
+				<option value="2000">2000</option>
+			</select></label></div>&nbsp;
+			<div class="form-group"><label for="month">Month
+			<select class="form-control col" name="month" id="month" title="Month" required>
+{#				<option value="*">ANY</option>#}
+				<option value="1">January</option>
+				<option value="2">February</option>
+				<option value="3">March</option>
+				<option value="4">April</option>
+				<option value="5">May</option>
+				<option value="6">June</option>
+				<option value="7">July</option>
+				<option value="8">August</option>
+				<option value="9">September</option>
+				<option value="10">October</option>
+				<option value="11">November</option>
+				<option value="12">December</option>
+			</select></label></div>&nbsp;
+			<div class="form-group"><label for="field">Department
+			<select class="form-control col" name="field" id="field" required>
+{#				<option value="*">ANY</option>#}
+				<option value="2-Wheelers">2-Wheelers</option>
+				<option value="3-Wheelers">3-Wheelers</option>
+				<option value="4-Wheelers">4-Wheelers</option>
+				<option value="Health">Health</option>
+				<option value="Business">Business</option>
+				<option value="Life">Life</option>
+				
+			</select></label></div>&nbsp;
+			<div class="form-group"><label for="field">&nbsp;
+			<input class="btn btn-default btn-primary btn-block col" type="button" onclick="ajaxfunction()"
+                   value="Search"/></label>
+			</div>&nbsp;
+		</form>
+		<hr>
+		<div id="ajaxDiv">Welcome!</div>
+	</div>
+</body>
+</html>

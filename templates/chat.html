@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Chat</title>
+    {% load static %}
+    <link href={% static "image/icon.png" %} rel="icon">
+    <!-- Latest compiled and minified CSS -->
+    <link href={% static "lib/bootstrap.css" %} rel="stylesheet">
+    <link href={% static "lib/bootstrap.min.css" %} rel="stylesheet">
+    <!-- jQuery library -->
+    <script src={% static "lib/jquery-3.4.1.js" %}></script>
+    <script src={% static "lib/jquery-3.4.1.min.js" %}></script>
+    <!-- Popper JS -->
+    <script src={% static "lib/popper.js" %}></script>
+    <!-- Latest compiled JavaScript -->
+    <script src={% static "lib/bootstrap.js" %}></script>
+    <script src={% static "lib/bootstrap.min.js" %}></script>
+{#    /[^a-zA-Z0-9`~!@#$%^&*()_|+\-=?;:,.<>{}\\\/\s]/gi; #}
+<script>
+	$(function() {
+		$('#txt_box').keyup(
+				function() {
+					var yourInput = $(this).val();
+					re = /[^a-zA-Z0-9`~!@#$%^&*()_|+\-=?;:,.\\\/\s]/gi;
+					var isSplChar = re.test(yourInput);
+					if (isSplChar) {
+						var no_spl_char = yourInput.replace(
+								/[^a-zA-Z0-9`~!@#$%^&*()_|+\-=?;:,.\\\/\s]/gi,
+								'');
+						$(this).val(no_spl_char);
+					}
+				});
+	});
+	function f(i){
+        let x = document.getElementById("email");
+        x.value = i;
+	}
+</script>
+<style>
+#SM {
+	text-align: right;
+	padding: 1%;
+	background: rgb(192, 255, 64);
+}
+
+#SI {
+	text-align: right;
+	padding: 8px;
+	background: rgb(0, 255, 0);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#RI {
+	text-align: left;
+	padding: 1%;
+	background: rgb(255, 0, 0);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#RM {
+	text-align: left;
+	padding: 1%;
+	background: rgb(255, 128, 0);
+}
+</style>
+</head>
+<body>
+	<nav class="navbar sticky-top alert-danger btn-outline-primary" style="z-index: 10000">
+		<li class="navbar-brand"><a href="/index"><img class="img"
+				src={% static "image/header.png" %} width="50px" height="50px"></a></li>
+		<li class="nav mr-auto">
+			<h1>INSURANCE COMPANY LTD</h1>
+		</li>
+		<li class="collapse navbar-collapse" id="navbarCollapse">
+		<li class="nav-item list-unstyled rounded btn-danger"><a
+			class="nav-link rounded" href="/chat" style="color: white;">
+				<h3>Refresh</h3>
+		</a></li> &nbsp;&nbsp;
+		<li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+			class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+			style="color: white;">
+				<h3>Menu</h3>
+		</a>
+			<ul class="dropdown-menu">
+				<a class="dropdown-item" href="/index">Home</a>
+				<a class="dropdown-item" href="/about">About</a>
+				<a class="dropdown-item" href="/announcement">Announcement</a>
+				<a class="dropdown-item" href="/history">History</a>
+				<a class="dropdown-item" href="/contact">Contact</a>
+			</ul></li> &nbsp;&nbsp;
+		<li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+			class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+			style="color: white;">
+				<h3>Dashboard</h3>
+		</a>
+			<ul class="dropdown-menu">
+				<a class="dropdown-item" href="/dashboard"><div><center><img style="border-radius: 500px" src=
+                        {% static "/image/defaultuser.jpg" %} width="120px" height="120px"/>
+                    <br>{{ fname }}&nbsp;{{ lname }}</center></div></a>
+				<hr>
+				<a class="dropdown-item active" href="/chat">Chat</a>
+				<a class="dropdown-item" href="/logout">Logout</a>
+			</ul>
+		</li>
+	</nav>
+
+	<div class="alert-info">
+		<ul>
+			<li>Reload page to see new messages</li>
+            {% if boolean1 %}
+                <li>Message sent to {{ receiver }}</li>
+            {% endif %}
+		</ul>
+	</div>
+	<div class="container-fluid row">
+		<div class="sticky-top col-3">
+			<form action="/chat/" method="post">
+                {% csrf_token %}
+				<input type="email" name="receiver" id="email" class="form-control alert-success" placeholder="To" required /><br>
+				<textarea name="message" id="txt_box" rows=10 placeholder="Type your message..." maxlength="255" class="form-control alert-danger" required></textarea>
+				<br> <input type="submit" value="Send" class="btn btn-default btn-primary btn-block" />
+			</form>
+
+			<form action="/process/" method="post">
+                {% csrf_token %}
+				<br> <input type="submit" name=action value="Delete Sent Messages" class="btn btn-default btn-primary btn-block" />
+				<br> <input type="submit" name=action value="Delete Received Messages" class="btn btn-default btn-primary btn-block" />
+			</form>
+		</div>
+			
+			<div style="border: 1px solid black;padding:1% 2%;overflow: auto;word-wrap: break-word;height:500px" class="col-9">
+			<h4 class="col-8" style="position: fixed; z-index: 2; text-align:center;"><span style="border-radius: 50px; background: lightblue; padding: 5px 15%">Messages</span></h4><br><br>
+
+{% for imessage in messages %}
+    {% ifequal imessage.sender email %}
+			<div class=row>
+				<div id=SM class="rounded col-9">{{ imessage.message }}</div>
+				<div id=SI class="rounded col-3" onclick="f('{{ imessage.receiver }}')" style="cursor:
+                pointer;">To: {{ imessage.receiver }}</div>
+			</div><br>
+    {% endifequal %}
+    {% ifequal imessage.receiver email %}
+            <div class=row style="color:white;">
+				<div id=RI class="rounded col-3" onclick="f('{{ imessage.sender }}')" style="cursor: pointer;">From: {{ imessage.sender }}</div>
+				<div id=RM class="rounded col-9">{{ imessage.message }}</div>
+			</div><br>
+    {% endifequal %}
+{% endfor %}
+		</div>
+	</div>
+</body>
+</html>
+{# TODO: <div style="visibility: hidden;"> TODO: DELETE MESSAGE OPTION</div>#}

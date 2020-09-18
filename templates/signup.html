@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+   <title>Signup</title>
+    {% load static %}
+{#    <link href={% static "css/css2.css" %} rel="stylesheet">#}
+    <link href={% static "image/icon.png" %} rel="icon">
+    <!-- Latest compiled and minified CSS -->
+    <link href={% static "lib/bootstrap.css" %} rel="stylesheet">
+    <link href={% static "lib/bootstrap.min.css" %} rel="stylesheet">
+    <!-- jQuery library -->
+    <script src={% static "lib/jquery-3.4.1.js" %}></script>
+    <script src={% static "lib/jquery-3.4.1.min.js" %}></script>
+    <!-- Popper JS -->
+    <script src={% static "lib/popper.js" %}></script>
+    <!-- Latest compiled JavaScript -->
+    <script src={% static "lib/bootstrap.js" %}></script>
+    <script src={% static "lib/bootstrap.min.js" %}></script>
+   <style>
+      body{
+		background-image: url({% static "image/clg/4.jpg" %});
+		background-size: 100% 100%;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-position: top;
+	}	
+	</style>
+</head>
+<body>
+   <nav class="navbar sticky-top alert-danger btn-outline-primary">
+      <li class="navbar-brand"><a href="/index">
+          <img class="img" src={% static "image/header.png" %} width="50px" height="50px"></a></li>
+      <li class="nav mr-auto">
+         <h1>INSURANCE COMPANY LTD</h1>
+      </li>
+      <li class="collapse navbar-collapse" id="navbarCollapse">
+      <li class="nav-item dropdown list-unstyled rounded btn-danger"><a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown" style="color: white;">
+            <h3>Menu</h3>
+         </a>
+         <ul class="dropdown-menu">
+            <a class="dropdown-item" href="/index">Home</a>
+            <a class="dropdown-item" href="/about">About</a>
+            <a class="dropdown-item" href="/announcement">Announcement</a>
+            <a class="dropdown-item" href="/history">History</a>
+            <a class="dropdown-item" href="/contact">Contact</a>
+         </ul>
+      </li> &nbsp;&nbsp;
+      <li class="nav-item list-unstyled rounded btn-danger"><a class="nav-link rounded" href="/login"
+                                                               style="color: white;">
+            <h3>Login</h3>
+         </a></li>
+   </nav>
+   <br>
+   <div class="container rounded" style="background: white; border: gray solid 0.5px; width: 35%">
+       <center>
+         <form class="form-horizontal" method="post" action="/signup/">
+             {% csrf_token %}
+            <div class="form-group">
+               <br>
+               <h1 class="h1 mb-3 font-weight-normal">Sign Up</h1>
+            </div>
+            <div class="form-group col-sm-10">
+               <input type="text" class="form-control border-primary" name="First-Name" placeholder="First Name" required autofocus>
+            </div>
+            <div class="form-group col-sm-10">
+               <input type="text" class="form-control border-primary" name="Middle-Name" placeholder="Middle Name"
+                      required>
+            </div>
+            <div class="form-group col-sm-10">
+               <input type="text" class="form-control border-primary" name="Last-Name" placeholder="Last Name">
+            </div>
+            <div class="form-group col-sm-10 btn-group btn-group-toggle btn-block" data-toggle="buttons">
+               <label class="btn btn-success active"> <input type="radio" name="Sex" value="Male" checked> Male
+               </label> <label class="btn btn-success"> <input type="radio" name="Sex" value="Female"> Female
+               </label> <label class="btn btn-success"> <input type="radio" name="Sex" value="Other"> Other
+               </label>
+            </div>
+            
+            <div class="form-group col-sm-10 btn-group btn-group-toggle btn-block" data-toggle="buttons">
+               <label class="btn btn-info active"> <input type="radio" name="Degree" value="TATA" checked> TATA
+               </label> <label class="btn btn-info"> <input type="radio" name="Degree" value="Hyundai"> Hyundai
+               </label> <label class="btn btn-info"> <input type="radio" name="Degree" value="Nissan"> Nissan
+               </label> <label class="btn btn-info"> <input type="radio" name="Degree" value="AUDI"> AUDI
+               </label>
+            </div>
+            
+            <!-- <div class="form-group col-sm-10 btn-group btn-group-toggle btn-block" data-toggle="buttons">
+               <label class="btn btn-info active"> <input type="radio" name="Branch" value="Computer" checked> Computer
+               </label> <label class="btn btn-info"> <input type="radio" name="Branch" value="Mechanical"> Mechanical
+               </label> <label class="btn btn-info"> <input type="radio" name="Branch" value="Civil"> Civil
+               </label> <label class="btn btn-info"> <input type="radio" name="Branch" value="Electrical"> Electrical
+               </label>
+            </div> -->
+            <div class="form-group col-sm-10">
+               <input type="email" class="form-control border-primary" name="Email" placeholder="E-mail" required>
+            </div>
+            <div class="form-group col-sm-10">
+               <input type="password" id="inputPassword" class="form-control border-primary" name="Password" placeholder="Password" required>
+            </div>
+            <div class="form-group col-sm-10">
+               <br>
+               <button class="btn btn-default btn-primary btn-block" type="submit">Submit</button>
+               <br/>
+            </div>
+         </form>
+      </div>
+   </div>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>User Dashboard</title>
+    {% load static %}
+    <link href={% static "image/icon.png" %} rel="icon">
+    <!-- Latest compiled and minified CSS -->
+    <link href={% static "lib/bootstrap.css" %} rel="stylesheet">
+    <link href={% static "lib/bootstrap.min.css" %} rel="stylesheet">
+    <!-- jQuery library -->
+    <script src={% static "lib/jquery-3.4.1.js" %}></script>
+    <script src={% static "lib/jquery-3.4.1.min.js" %}></script>
+    <!-- Popper JS -->
+    <script src={% static "lib/popper.js" %}></script>
+    <!-- Latest compiled JavaScript -->
+    <script src={% static "lib/bootstrap.js" %}></script>
+    <script src={% static "lib/bootstrap.min.js" %}></script>
+<script>
+	$(function() {
+		$("#button").click(function() {
+			$("#hist").toggle();
+		});
+	});
+    {% for claim in claims %}
+	$(function() {
+		$("#image{{ claim.sr }}").click(function() {
+			$("#img{{ claim.sr }}a").toggle();
+			$("#img{{ claim.sr }}b").toggle();
+			$("#img{{ claim.sr }}c").toggle();
+			$("#img{{ claim.sr }}d").toggle();
+			$("#img{{ claim.sr }}e").toggle();
+			$("#img{{ claim.sr }}f").toggle();
+			$("#img{{ claim.sr }}g").toggle();
+		});
+	});
+    {% endfor %}
+	{#$(function() {#}
+	{#	$("#image1").click(function() {#}
+	{#		$("#img1").toggle();#}
+	{#		$("#img11").toggle();#}
+	{#	});#}
+	{#  });#}
+	{#$(function() {#}
+	{#	$("#image2").click(function() {#}
+	{#		$("#img2").toggle();#}
+	{#		$("#img21").toggle();#}
+	{#	});#}
+	{#  });#}
+	{#$(function() {#}
+	{#	$("#image3").click(function() {#}
+	{#		$("#img3").toggle();#}
+	{#		$("#img31").toggle();#}
+	{#	});#}
+	{#  });#}
+	
+</script>
+</head>
+<body>
+	<nav class="navbar sticky-top alert-danger btn-outline-primary">
+		<li class="navbar-brand"><a href="/index"><img class="img"
+				src={% static "image/header.png" %} width="50px" height="50px"></a></li>
+		<li class="nav mr-auto">
+			<h1>INSURANCE COMPANY LTD</h1>
+		</li>
+		<li class="collapse navbar-collapse" id="navbarCollapse">
+		<li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+			class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+			style="color: white;">
+				<h3>Menu</h3>
+		</a>
+			<ul class="dropdown-menu">
+				<a class="dropdown-item" href="/index">Home</a>
+				<a class="dropdown-item" href="/about">About</a>
+				<a class="dropdown-item" href="/announcement">Announcement</a>
+				<a class="dropdown-item" href="/history">History</a>
+				<a class="dropdown-item" href="/contact">Contact</a>
+			</ul></li> &nbsp;&nbsp;
+		<li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+			class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+			style="color: white;">
+				<h3>Dashboard</h3>
+		</a>
+			<ul class="dropdown-menu">
+				<a class="dropdown-item" href="#"><div>
+						<center>
+							<img style="border-radius: 500px" src={% static "/image/defaultuser.jpg" %}
+								width="120px" height="120px" /><br>{{ fname }}&nbsp;{{ lname }} </center>
+					</div></a>
+				<hr>
+				<a class="dropdown-item" href="/chat">Chat</a>
+				<a class="dropdown-item" href="/logout">Logout</a>
+			</ul></li>
+	</nav>
+	<div style="background-color: yellow">
+		<h3 style="color: blue; text-align: center">USER DASHBOARD</h3>
+	</div>
+	<br>
+	<div class="container">
+		<div class=row>
+			<div class=col>
+				<img src={% static "/image/defaultuser.jpg" %} style="position: relative; height: 100%; width: 100%;" />
+			</div>
+			<div class=col>
+				<table style="width: 100%; font-size: 1.5em">
+					<tr>
+						<th colspan="3" style="text-align: center">USER INFO</th>
+					</tr>
+					<tr>
+						<td>E-mail</td>
+						<td>:</td>
+						<td>{{ email }}</td>
+					</tr>
+					<tr>
+						<td>First Name</td>
+						<td>:</td>
+						<td>{{ fname }}</td>
+					</tr>
+					<tr>
+						<td>Middle Name</td>
+						<td>:</td>
+						<td>{{ mname }}</td>
+					</tr>
+					<tr>
+						<td>Last Name</td>
+						<td>:</td>
+						<td>{{ lname }}</td>
+					</tr>
+					<tr>
+						<td>Gender</td>
+						<td>:</td>
+						<td>{{ gender }}</td>
+					</tr>
+					<tr>
+						<td>Car Type</td>
+						<td>:</td>
+						<td>{{ degree }}{# insuranceType #}</td>
+					</tr>
+					<tr>
+						<td>Claims</td>
+						<td>:</td>
+						<td>{{ total_claims }}</td>
+					</tr>
+                    {#<%-- <tr>#}
+                    {#<td>Degree</td>#}
+                    {#<td>:</td>#}
+                    {#<td><%=degree %></td>#}
+                    {#</tr> --%>#}
+                    {#<%-- <tr>#}
+                    {#<td>Branch</td>#}
+                    {#<td>:</td>#}
+                    {#<td><%=branch %></td>#}
+                    {#</tr> --%>#}
+				</table>
+			</div>
+			<div class=col>
+				<a href="/chat" style="text-decoration: none;">
+					<button class="btn btn-default btn-primary btn-block">Chat</button>
+				</a> <br> <a href="/apply" style="text-decoration: none;">
+					<button class="btn btn-default btn-primary btn-block">Apply
+						for Claim</button>
+					</a> <br> <a href="#" id="button" style="text-decoration: none;">
+					<button class="btn btn-default btn-primary btn-block">Show History</button>
+				</a> <br>
+{#				<a href="/predict" style="text-decoration: none;">#}
+{#					<button class="btn btn-default btn-primary btn-block">Predict Cost</button>#}
+{#				</a> <br>#}
+				<!-- <a href="#" style="text-decoration: none;">
+					<button class="btn btn-default btn-primary btn-block">Scorecard</button>
+				</a>
+				<br>
+				<a href="#" style="text-decoration: none;">
+					<button class="btn btn-default btn-primary btn-block">Assignments</button>
+				</a>
+				<br>
+				<a href="#" style="text-decoration: none;">
+					<button class="btn btn-default btn-primary btn-block">Timetable</button>
+				</a> -->
+			</div>
+		</div>
+		<br />
+		<div id="hist" style="display: none">
+			<div style="background-color: yellow">
+				<h3 style="color: blue; text-align: center">INSURANCE HISTORY</h3>
+			</div>
+			<h2>
+				<!-- <center>Insurance History</center> -->
+			</h2>
+			<table class="table table-md table-striped table-hover">
+				<tr class="table-primary">
+					<th scope="col">No</th>
+					<th scope="col">Date of Application</th>
+					<th scope="col">Status</th>
+					<th scope="col">Claim Amount</th>
+					<th scope="col">View Images</th>
+				</tr>
+{% for claim in claims %}
+				<tr class="table-{{ claim.color }}">
+					<th scope="row">{{ claim.sr }}</th>
+					<td>{{ claim.accident_date }}</td>
+					<td>{{ claim.processed }}</td>
+					<td>{{ claim.total_cost_estimation }}</td>
+					<td id="image{{ claim.sr }}">View</td>
+				</tr>
+				<tr id=img{{ claim.sr }}a class="table-{{ claim.color }}" style="display: none"><td></td>
+					<td colspan=2><img src={% static "/upload/coldstorage/front/"|add:claim.accident_front %} width="500px" height="250px"></td>
+					<td colspan=2><img src={% static "/upload/coldstorage/rear/"|add:claim.accident_rear %} width="500px" height="250px"></td>
+				</tr>
+				<tr id=img{{ claim.sr }}b class="table-{{ claim.color }}" style="display: none"><td></td>
+					<td colspan=2><img src={% static "/upload/coldstorage/left/"|add:claim.accident_left %} width="500px" height="250px"></td>
+					<td colspan=2><img src={% static "/upload/coldstorage/right/"|add:claim.accident_right %} width="500px" height="250px"></td>
+                </tr>
+                <tr id=img{{ claim.sr }}c class="table-{{ claim.color }}" style="display: none"><td></td>
+                    <td colspan=4><b>Is Car:</b>&nbsp;&nbsp;{{ claim.bool_is_car }}</td>
+                </tr>
+                {% if claim.passed %}
+                    <tr id=img{{ claim.sr }}d class="table-{{ claim.color }}" style="display: none"><td></td>
+                        <td><b>Hood ({{ partcost.hood }})</b><br>{{ claim.bool_hood }}</td>
+                        <td><b>Front Bumper ({{ partcost.bumper }})</b><br>{{ claim.bool_bumper_front }}</td>
+                        <td><b>Boot ({{ partcost.boot }})</b><br>{{ claim.bool_boot }}</td>
+                        <td><b>Rear Bumper ({{ partcost.bumper }})</b><br>{{ claim.bool_bumper_rear }}</td>
+				    </tr>
+                    <tr id=img{{ claim.sr }}f class="table-{{ claim.color }}" style="display: none"><td></td>
+                        <td colspan=2><b>Front Windshield ({{ partcost.windshield }})</b><br>{{ claim.bool_windshield_front }}</td>
+                        <td colspan=2><b>Rear Windshield ({{ partcost.windshield }})</b><br>{{ claim.bool_windshield_rear }}</td>
+				    </tr>
+                    <tr id=img{{ claim.sr }}e class="table-{{ claim.color }}" style="display: none"><td></td>
+                        <td><b>Left Door ({{ partcost.door }})</b><br>{{ claim.bool_door_left }}</td>
+                        <td><b>Left Window ({{ partcost.window }})</b><br>{{ claim.bool_window_left }}</td>
+                        <td><b>Right Door ({{ partcost.door }})</b><br>{{ claim.bool_door_right }}</td>
+                        <td><b>Right Window ({{ partcost.window }})</b><br>{{ claim.bool_window_right }}</td>
+				    </tr>
+                {% endif %}
+                <tr id=img{{ claim.sr }}g class="table-{{ claim.color }}" style="display: none"><td></td>
+                    <td colspan=4><b>Comment:</b>&nbsp;{{ claim.message }}</td>
+                </tr>
+{% empty %}
+    <tr class="table-secondary">
+    <td colspan="5" align="center">No Records Found!</td>
+    </tr>
+{% endfor %}
+            </table>
+        </div>
+        <br/> <br/>
+    </div>
+</body>
+</html>
+{#                <tr class="table-success">#}
+{#					<th scope="row">1</th>#}
+{#					<td>5/3/2015</td>#}
+{#					<td>Accepted</td>#}
+{#					<td>5000</td>#}
+{#					<td id="image1">View</td>#}
+{#				</tr>#}
+{#				<tr id=img1 class="table-success" style="display: none">#}
+{#					<td></td>#}
+{#					<td colspan=2><img src="./image/img/1/1.JPEG" width="500px" height="250px"></td>#}
+{#					<td colspan=2><img src="./image/img/1/2.JPEG" width="500px" height="250px"></td>#}
+{#				</tr>#}
+{#				<tr id=img11 class="table-success" style="display: none">#}
+{#					<td></td>#}
+{#					<td colspan=2><img src="./image/img/1/3.JPEG" width="500px" height="250px"></td>#}
+{#					<td colspan=2></td>#}
+{#				</tr>#}
+{#				<tr class="table-danger">#}
+{#					<th scope="row">2</th>#}
+{#					<td>7/8/2016</td>#}
+{#					<td>Rejected</td>#}
+{#					<td>0</td>#}
+{#					<td id="image2">View</td>#}
+{#				</tr>#}
+{#				<tr id=img2 class="table-danger" style="display: none">#}
+{#					<td></td>#}
+{#					<td colspan=2><img src="./image/img/2/1.jpg" width="500px" height="250px"></td>#}
+{#					<td colspan=2><img src="./image/img/2/2.jpg" width="500px" height="250px"></td>#}
+{#				</tr>#}
+{#				<tr id=img21 class="table-danger" style="display: none">#}
+{#					<td></td>#}
+{#					<td colspan=2><img src="./image/img/2/3.jpg" width="500px" height="250px"></td>#}
+{#					<td colspan=2><img src="./image/img/2/4.jpg" width="500px" height="250px"></td>#}
+{#				</tr>#}
+{#				<tr class="table-warning">#}
+{#					<th scope="row">3</th>#}
+{#					<td>9/10/2019</td>#}
+{#					<td>Pending</td>#}
+{#					<td>-</td>#}
+{#					<td id="image3">View</td>#}
+{#				</tr>#}
+{#				<tr id=img3 class="table-warning" style="display: none">#}
+{#					<td></td>#}
+{#					<td colspan=2><img src="./image/img/3/1.JPEG" width="500px" height="250px"></td>#}
+{#					<td colspan=2><img src="./image/img/3/2.JPEG" width="500px" height="250px"></td>#}
+{#				</tr>#}
+{#				<tr id=img31 class="table-warning" style="display: none">#}
+{#					<td></td>#}
+{#					<td colspan=2><img src="./image/img/3/3.JPEG" width="500px" height="250px"></td>#}
+{#					<td colspan=2></td>#}
+{#				</tr>#}

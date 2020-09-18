@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+	<link rel="icon" href="{% static 'image\ld.jpg' %}">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="{% static 'lib/bootstrap.min.css' %}">
+	<!-- jQuery library -->
+	<script src="{% static 'lib/jquery-3.4.1.min.js' %}"></script>
+	<!-- Popper JS -->
+	<script src="{% static 'lib/popper.min.js' %}"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="{% static 'lib/bootstrap.min.js' %}"></script>
+	<style>
+
+	</style>
+	<title></title>
+</head>
+<body>
+
+		<nav class="navbar sticky-top alert-danger btn-outline-primary">
+			<li class="navbar-brand">
+				<a href="#"><img class="img" src="{% static 'image/header.png' %}" width="50px" height="50px"></a>
+			</li>
+			<li class="nav mr-auto">
+				<h1>INSURANCE COMPANY LTD</h1>
+			</li>
+			<li class="collapse navbar-collapse" id="navbarCollapse">
+				<li class="nav-item dropdown list-unstyled rounded btn-danger">
+					<a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown" style="color:white;">
+						<h3>Menu</h3>
+					</a>
+					<ul class="dropdown-menu">
+						<a class="dropdown-item" href="#">Home</a>
+						<a class="dropdown-item" href="{% url 'about' %}">About</a>
+						<a class="dropdown-item" href="{% url 'announcement' %}">Announcement</a>
+						<a class="dropdown-item" href="{% url 'history' %}">History</a>
+						<a class="dropdown-item" href="{% url 'contact' %}">Contact</a>
+					</ul>
+				</li>
+				&nbsp;&nbsp;
+				<li class="nav-item list-unstyled rounded btn-danger">
+					<a class="nav-link rounded" href="{% url 'signup' %}" style="color:white;">
+						<h3>Sign Up</h3>
+					</a>
+				</li>
+			</li>
+		</nav>
+	<br>
+
+</body>
+</html>

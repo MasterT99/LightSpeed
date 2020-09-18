@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+<title>About</title>
+{#<link href="css/home.css" rel=stylesheet>#}
+{% load static %}
+<link href={% static "css/css3.css" %} rel="stylesheet">
+<link href={% static "image/icon.png" %} rel="icon">
+<!-- Latest compiled and minified CSS -->
+<link href={% static "lib/bootstrap.css" %} rel="stylesheet">
+<link href={% static "lib/bootstrap.min.css" %} rel="stylesheet">
+<!-- jQuery library -->
+<script src={% static "lib/jquery-3.4.1.js" %} ></script>
+<script src={% static "lib/jquery-3.4.1.min.js" %} ></script>
+<!-- Popper JS -->
+<script src={% static "lib/popper.js" %}></script>
+<!-- Latest compiled JavaScript -->
+<script src={% static "lib/bootstrap.js" %}></script>
+<script src={% static "lib/bootstrap.min.js" %}></script>
+
+<style>
+body {
+	background-image: url({% static "image/clg/6.jpg" %});
+	background-size: 100% 100%;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: top;
+}
+</style>
+
+</head>
+<body>
+
+	<nav class="navbar sticky-top alert-danger btn-outline-primary">
+		<li class="navbar-brand"><a href="/index"><img class="img"
+				src={% static "image/header.png" %} width="50px" height="50px"></a></li>
+		<li class="nav mr-auto">
+			<h1>INSURANCE COMPANY LTD</h1>
+		</li>
+		<li class="collapse navbar-collapse" id="navbarCollapse">
+		<li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+			class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+			style="color: white;">
+				<h3>Menu</h3>
+		</a>
+			<ul class="dropdown-menu">
+				<a class="dropdown-item" href="/index">Home</a>
+				<a class="dropdown-item active" href="#">About</a>
+				<a class="dropdown-item" href="/announcement">Announcement</a>
+				<a class="dropdown-item" href="/history">History</a>
+				<a class="dropdown-item" href="/contact">Contact</a>
+			</ul></li> &nbsp;&nbsp;
+		{% ifequal email None %}
+        <li class="nav-item list-unstyled rounded btn-danger"><a
+                class="nav-link rounded" href="/login" style="color: white;">
+            <h3>Login</h3>
+        </a></li>
+        </li>
+    {% else %}
+        <li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+                class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+                style="color: white;">
+            <h3>Dashboard</h3>
+        </a>
+            <ul class="dropdown-menu">
+                <a class="dropdown-item" href="/dashboard">
+                    <div style="text-align: center;"><img
+                            style="border-radius: 500px" src={% static "image/defaultuser.jpg" %} width="120px"
+                            height="120px" alt="User Image"/><br>{{ fname }}&nbsp;{{ lname }}
+                    </div>
+                </a>
+                <hr>
+                <a class="dropdown-item" href="/chat">Chat</a>
+                <a class="dropdown-item" href="/logout">Logout</a>
+            </ul>
+        </li>
+    {% endifequal %}
+	</nav>
+	<br>
+	<div class="container rounded"
+		style="font-size: 20px; text-align: justify; background: white;">
+		<br>
+		<figure>
+			<img style="float: right; margin: 20px" src={% static "image/defaultuser.jpg" %}
+				alt="CEO" />
+			<!-- <figcaption style="float: bottom; margin: 20px">CEO</figcaption> -->
+		</figure>
+
+		<p>
+			<h1>CEO Greetings,</h1>
+		</p>
+		<p>
+			<h2>We will construct the beautiful future with changes and innovations.</h2>
+		</p>
+        <p>
+		Since its establishment, DHL has played a pivotal role in the
+		global automotive lighting industry with the faith in customers,
+		consistent technology development and pioneering spirit for the
+		future.
+		</p>
+		<p>Automotive light bulbs produced by DHL are sold not
+			only to the OEM supply for carmakers in Korea, but also to all of
+			countries globally, lighting up the night driving of all the drivers
+			safely and brightly. Now, DHL will lead the way of new
+			technology changes and innovations in automotive lighting industry,
+			meeting the demand of automotive industry technology and market
+			changes.</p>
+		<p>Also, as a member of global community, we will be a beautiful
+			partner with love and giving attitude.
+			<br><br>
+		<h2>Mr. John Doe</h2>
+		<p>
+			Insurance Company LTD., CEO<br> January 1, 2012
+		</p>
+		<br>
+	</div>
+	<br>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+    <title>Car Damage Detection</title>
+    {% load static %}
+{#    <link href={% static "css/css3.css" %} rel="stylesheet">#}
+    <link href={% static "image/icon.png" %} rel="icon">
+    <!-- Latest compiled and minified CSS -->
+    <link href={% static "lib/bootstrap.css" %} rel="stylesheet">
+    <link href={% static "lib/bootstrap.min.css" %} rel="stylesheet">
+    <!-- jQuery library -->
+    <script src={% static "lib/jquery-3.4.1.js" %}></script>
+    <script src={% static "lib/jquery-3.4.1.min.js" %}></script>
+    <!-- Popper JS -->
+    <script src={% static "lib/popper.js" %}></script>
+    <!-- Latest compiled JavaScript -->
+    <script src={% static "lib/bootstrap.js" %}></script>
+    <script src={% static "lib/bootstrap.min.js" %}></script>
+    <style>a{color:white;}</style>
+</head>
+<body>
+<nav class="navbar sticky-top alert-danger btn-outline-primary">
+    <li class="navbar-brand">
+        <a href="/index"><img class="img" src={% static "image/header.png" %}
+                width="50px" height="50px"></a>
+    </li>
+    <li class="nav mr-auto">
+        <h1>INSURANCE COMPANY LTD</h1>
+    </li>
+    <li class="collapse navbar-collapse" id="navbarCollapse">
+    <li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+            class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+            style="color: white;">
+        <h3>Menu</h3>
+    </a>
+        <ul class="dropdown-menu">
+            <a class="dropdown-item active" href="#">Home</a>
+            <a class="dropdown-item" href="/about">About</a>
+            <a class="dropdown-item" href="/announcement">Announcement</a>
+            <a class="dropdown-item" href="/history">History</a>
+            <a class="dropdown-item" href="/contact">Contact</a>
+        </ul>
+    </li> &nbsp;&nbsp;
+    {% ifequal email None %}
+        <li class="nav-item list-unstyled rounded btn-danger"><a
+                class="nav-link rounded" href="/login" style="color: white;">
+            <h3>Login</h3>
+        </a></li>
+        </li>
+    {% else %}
+        <li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+                class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+                style="color: white;">
+            <h3>Dashboard</h3>
+        </a>
+            <ul class="dropdown-menu">
+                <a class="dropdown-item" href="/dashboard">
+                    <div style="text-align: center;"><img
+                            style="border-radius: 500px" src={% static "image/defaultuser.jpg" %} width="120px"
+                            height="120px" alt="User Image"/><br>{{ email }}<br>{{ fname }}&nbsp;{{ lname }}
+                    </div>
+                </a>
+                <hr>
+                <a class="dropdown-item" href="/chat">Chat</a>
+                <a class="dropdown-item" href="/login">Support</a>
+                <a class="dropdown-item" href="/logout">Logout</a>
+            </ul>
+        </li>
+    {% endifequal %}
+</nav>
+
+<div id="slideshow" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active"><img src={% static "image/clg/0.jpg" %} width="100%"
+                                               height="650px"></div>
+        {% for image in images %}
+            <div class="carousel-item"><img src={% static image %} width="100%"
+                                            height="650px"></div>
+        {% endfor %}
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#slideshow" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a> <a class="carousel-control-next" href="#slideshow" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+    </div>
+</div>
+<!--<div style="position: relative;width: 100%;height:60%;margin-top: 1%;border-bottom: solid 1px red;">
+    <img id=km src="image/clg/4.jpg" style="position:absolute;width: 100%;height: 100%;">
+</div>
+<script type="text/javascript">
+    var a = document.getElementById("km");
+    var b = 1;
+
+    function ab() {
+        a.src = 'image/clg/' + b + '.jpg';
+        if (b == 20)
+            b = 1;
+        else
+            b++;
+    }
+    setInterval(ab, 5000);
+</script>
+-->
+<div style="background-color: black;color: white;">
+    <div style="padding: 50px;width: 100%" class="row">
+        <div class="col-4">
+				<span>
+					<h1>Quick Links</h1>
+				</span>
+            <hr style="border-bottom: solid lime;">
+            <li class="list-unstyled">
+                <ul>
+                    <a href="/contact">MAP</a>
+                </ul>
+                <ul>
+                    <a href="/announcement">USEFUL LINKS</a>
+                </ul>
+                <ul>
+                    <a href="#">ONLINE PAYMENT</a>
+                </ul>
+                <ul>
+                    <a href="/announcement">DOWNLOADS</a>
+                </ul>
+            </li>
+        </div>
+        <div class="col-4">
+				<span>
+					<h1>About</h1>
+				</span>
+            <hr style="border-bottom: solid lime;">
+            <li class="list-unstyled">
+                <ul>
+                    <a href="/history">HISTORY</a>
+                </ul>
+                <ul>
+                    <a href="/announcement">INSURANCE PROCEDURE</a>
+                </ul>
+                <ul>
+                    <a href="/contact">DIRECTION</a>
+                </ul>
+                <ul>
+                    <a href="/about">TERMS & CONDITIONS</a>
+                </ul>
+            </li>
+        </div>
+        <div class="col-4">
+				<span>
+					<h1>Important Info</h1>
+				</span>
+            <hr style="border-bottom: solid lime;">
+            <li class="list-unstyled">
+                <ul>
+                    <a href="/history">RIGHT TO INFO ACT</a>
+                </ul>
+                <ul>
+                    <a href="/announcement">RULES</a>
+                </ul>
+                <ul>
+                    <a href="/contact">FAQ</a>
+                </ul>
+                <ul>
+                    <a href="/announement">TENDER NOTICE</a>
+                </ul>
+            </li>
+        </div>
+    </div>
+</div>
+</body>
+</html>

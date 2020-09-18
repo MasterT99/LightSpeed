@@ -1,0 +1,20 @@
+Project Details:-
+Team ID        : 86513
+Project Title  : Car Damage Detection System
+College Name   : L. D. COLLEGE OF ENGINEERING, AHMEDABAD
+Department     : BE - Computer Engineering
+Year           : 2020
+Keyword        : Artificial Intelligence, Machine Learning, Deep Learning, Image Processing, Damaged Car Detection, Insurance Claiming
+
+Internal Guide : Prof. Pragnesh Patel
+
+Team Details:-
+- 160280107100  Shah Keval
+- 160280107053  Mehta Bhavy
+- 160280107098  Shah Het
+- 160280107104  Shah Nigam
+- 160280107113  Tamboli Rushabh
+
+Project Demo Video:-
+- https://youtu.be/B4H_FjYRPqg
+

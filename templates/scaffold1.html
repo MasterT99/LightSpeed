@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head><title>Car Damage Detection</title>{% load static %}
+    <link href={% static "css/css3.css" %} rel="stylesheet">
+    <link href={% static "image/icon.png" %} rel="icon">
+    <link href={% static "lib/bootstrap.css" %} rel="stylesheet">
+    <link href={% static "lib/bootstrap.min.css" %} rel="stylesheet">
+    <script src={% static "lib/jquery-3.4.1.js" %}></script>
+    <script src={% static "lib/jquery-3.4.1.min.js" %}></script>
+    <script src={% static "lib/popper.js" %}></script>
+    <script src={% static "lib/bootstrap.js" %}></script>
+    <script src={% static "lib/bootstrap.min.js" %}></script>
+    <meta http-equiv="refresh" content="{{ time }}; url=/{{ page }}">
+</head>
+<body class="alert-{{ type }}">
+<center><br>
+    <h1>{{ head1|safe }}</h1><br>
+    <h3>{{ head2|safe }}</h3></center>
+</body>
+</html>

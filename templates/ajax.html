@@ -1,0 +1,13 @@
+<h4 style="color=gray">About {{ length }} Results Found!</h4><br>
+{% for record in circular %}
+    <div class="row">
+        <div id=SI class="rounded col-3">
+            {{ record.year }} / {{ record.month }} &nbsp; - &nbsp; {{ record.field }}
+        </div>
+        <div id=SM class="rounded col-9">
+            {{ record.invention |safe }}
+        </div>
+    </div>
+    <br>
+{% endfor %}
+<hr>

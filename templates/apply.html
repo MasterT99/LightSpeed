@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Apply for Claim</title>
+    {% load static %}
+    <link href={% static "css/css3.css" %} rel="stylesheet">
+    <link href={% static "image/icon.png" %} rel="icon">
+    <!-- Latest compiled and minified CSS -->
+    <link href={% static "lib/bootstrap.css" %} rel="stylesheet">
+    <link href={% static "lib/bootstrap.min.css" %} rel="stylesheet">
+    <!-- jQuery library -->
+    <script src={% static "lib/jquery-3.4.1.js" %}></script>
+    <script src={% static "lib/jquery-3.4.1.min.js" %}></script>
+    <!-- Popper JS -->
+    <script src={% static "lib/popper.js" %}></script>
+    <!-- Latest compiled JavaScript -->
+    <script src={% static "lib/bootstrap.js" %}></script>
+    <script src={% static "lib/bootstrap.min.js" %}></script>
+   <script>
+	$(function() {
+		$('#txt_box').keyup(
+				function() {
+					var yourInput = $(this).val();
+					re = /[^a-zA-Z0-9`~!@#$%^&*()_|+\-=?;:,.\\\/\s]/gi;
+					var isSplChar = re.test(yourInput);
+					if (isSplChar) {
+						var no_spl_char = yourInput.replace(
+								/[^a-zA-Z0-9`~!@#$%^&*()_|+\-=?;:,.\\\/\s]/gi,
+								'');
+						$(this).val(no_spl_char);
+					}
+				});
+	});
+   </script>
+   <style>
+      body{
+		background-image: url({% static "image/car-plan.jpg" %});
+		background-size: 100% 100%;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-position: top;
+	}	
+	</style>
+</head>
+<body>
+   <nav class="navbar sticky-top alert-danger btn-outline-primary">
+      <li class="navbar-brand"><a href="/index"><img class="img" src={% static "image/header.png" %} width="50px"
+                                                        height="50px"></a></li>
+      <li class="nav mr-auto">
+         <h1>INSURANCE COMPANY LTD</h1>
+      </li>
+      <li class="collapse navbar-collapse" id="navbarCollapse">
+      <li class="nav-item dropdown list-unstyled rounded btn-danger"><a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown" style="color: white;">
+            <h3>Menu</h3>
+         </a>
+         <ul class="dropdown-menu">
+            <a class="dropdown-item" href="/index">Home</a>
+            <a class="dropdown-item" href="/about">About</a>
+            <a class="dropdown-item" href="/announcement">Announcement</a>
+            <a class="dropdown-item" href="/history">History</a>
+            <a class="dropdown-item" href="/contact">Contact</a>
+         </ul>
+      </li> &nbsp;&nbsp;
+		<li class="nav-item dropdown list-unstyled rounded btn-danger"><a
+			class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"
+			style="color: white;">
+				<h3>Dashboard</h3>
+		</a>
+			<ul class="dropdown-menu">
+				<a class="dropdown-item" href="/dashboard"><div>
+						<center>
+							<img style="border-radius: 500px" src={% static "/image/defaultuser.jpg" %}
+								width="120px" height="120px" /><br>{{ fname }}&nbsp;{{ lname }}</center>
+					</div></a>
+				<hr>
+				<a class="dropdown-item" href="/chat">Chat</a>
+				<a class="dropdown-item" href="/logout">Logout</a>
+			</ul></li>
+	</nav>
+   <br>
+   <div class="container rounded" style="background: white; border: gray solid 0.5px; width: 35%;position: absolute;right:2%">
+      <center>
+          <form class="form-horizontal post-form" method="post" action="/prediction/" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-group">
+                  <br>
+                  <h1 class="h1 mb-3 font-weight-normal">Insurance Claim</h1>
+              </div>
+              <div class="form-group input-group col-sm-10">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text border-primary" id="date">Date of Accident</span>
+                  </div>
+                  <input type="date" class="form-control border-primary" aria-describedby="date" name="accident_date"
+                         placeholder="Accident Date" title="Enter Accident Date" required autofocus>
+              </div>
+              <!--<div class="form-group input-group col-sm-10">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required="required">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+              </div>-->
+              <div class="form-group input-group col-sm-10">
+                  <!-- <input type="file" class="form-control-file" name="RCBOOK" placeholder="RCBOOK" title="Upload image of RCBOOK" required> -->
+                  <div class="custom-file">
+                      <label class="custom-file-label border-primary" for="rcbook">Upload RC book</label>
+                      <input type="file" class="custom-file-input border-primary" name="rcbook" id="rcbook" {# required #}>
+                  </div>
+              </div>
+              <div class="form-group col-sm-10">
+                  <!-- <input type="file" class="form-control-file" name="LICENCE" title="Upload image of Licence" required> -->
+                  <div class="custom-file border-primary">
+                      <label class="custom-file-label border-primary" for="licence">Upload Image of Licence</label>
+                      <input type="file" class="custom-file-input" name="licence" id="licence" {# required #}>
+                  </div>
+              </div>
+
+
+              <div class="form-group col-sm-10">
+                  <!-- <input type="file" class="form-control-file" name="ACCIDENT" multiple title="Upload image of Accident" required> -->
+                  <div class="custom-file border-primary">
+                      <label class="custom-file-label border-primary" for="accident">Upload Images of Car Front</label>
+                      <input type="file" class="custom-file-input" name="accident_front" id="accident" required/>
+                  </div>
+              </div>
+
+              <div class="form-group col-sm-10">
+                  <div class="custom-file border-primary">
+                      <label class="custom-file-label border-primary" for="accident">Upload Images of Car Left</label>
+                      <input type="file" class="custom-file-input" name="accident_left" id="accident" required/>
+                  </div>
+              </div>
+              <div class="form-group col-sm-10">
+                  <div class="custom-file border-primary">
+                      <label class="custom-file-label border-primary" for="accident">Upload Images of Car Rear</label>
+                      <input type="file" class="custom-file-input" name="accident_rear" id="accident" required/>
+                  </div>
+              </div>
+              <div class="form-group col-sm-10">
+                  <div class="custom-file border-primary">
+                      <label class="custom-file-label border-primary" for="accident">Upload Images of Car Right</label>
+                      <input type="file" class="custom-file-input" name="accident_right" id="accident" required/>
+                  </div>
+              </div>
+
+              <div class="form-group col-sm-10">
+                  <!-- <textarea class="border-primary" rows="5" cols="48">Enter any query</textarea> -->
+{#                  <label class="border-primary" for="txt_box">Write information about accident here</label>#}
+                  <textarea name="message" id="txt_box" rows=8 placeholder="Type your query here..." maxlength="255"
+                            class="form-control border-primary"></textarea>
+              </div>
+
+              <div class="form-group col-sm-10">
+                  <br>
+                  <button class="btn btn-default btn-primary btn-block" type="submit">Claim Insurance</button>
+                  <br>
+              </div>
+         </form>
+      </center>
+   </div>
+</body>
+</html>
