@@ -33,7 +33,7 @@ https://youtu.be/B4H_FjYRPqg
 3. Unzip model.zip in the directory `LightSpeed\CDD\static\model`.
 	- Your directory should look like this:
 		```
-		model
+		LightSpeed\CDD\static\model
 		│   car.h5
 		│   door.h5
 		│   front.h5
@@ -55,9 +55,9 @@ https://youtu.be/B4H_FjYRPqg
 				└───variables_temp_ea0f68758ae940398f50e26c2f256b68
 		```
 		- Delete model.zip.001-015 files after successfully extracting model files.
-4. Create 12 folders as shown below
+4. Create empty folders as shown below
    ```
-			upload
+   LightSpeed\CDD\static\upload
 			├───coldstorage
 			│   ├───front
 			│   ├───left
@@ -73,7 +73,7 @@ https://youtu.be/B4H_FjYRPqg
 				└───right
 				    └───a
    ```
-	- Make sure to create folders, otherwise program will throw errors.
+	- **Make sure to create folders, otherwise program will throw errors.**
 	
 5. Now change directory to root folder `LightSpeed` and execute `python manage.py runserver`
 6. Open http://127.0.0.1:8000 in your browser.
